@@ -3,16 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Sebi/Desktop/Schule/Java/Schule/PiBotClient/src/tracking/Tracker.java</file>
-            <file>file:/C:/Users/Sebi/Desktop/Schule/Java/Schule/PiBotClient/src/view/MainUI.java</file>
-            <file>file:/C:/Users/Sebi/Desktop/Schule/Java/Schule/PiBotClient/src/network/AbstractNetwork.java</file>
-            <file>file:/C:/Users/Sebi/Desktop/Schule/Java/Schule/PiBotClient/src/movementController/MovementController.java</file>
-            <file>file:/C:/Users/Sebi/Desktop/Schule/Java/Schule/PiBotClient/src/network/NetworkController.java</file>
-            <file>file:/C:/Users/Sebi/Desktop/Schule/Java/Schule/PiBotClient/src/network/TestNetworkController.java</file>
-            <file>file:/C:/Users/Sebi/Desktop/Schule/Java/Schule/PiBotClient/src/view/TrackView.java</file>
-            <file>file:/C:/Users/Sebi/Desktop/Schule/Java/Schule/PiBotClient/src/autoLog/Log.java</file>
-            <file>file:/C:/Users/Sebi/Desktop/Schule/Java/Schule/PiBotClient/src/view/ConnectionView.java</file>
-            <file>file:/C:/Users/Sebi/Desktop/Schule/Java/Schule/PiBotClient/src/testEnviromnet/TestEnviroment.java</file>
+            <file>file:/C:/Users/Sebi/Documents/GitHub/PiRobotProjectJava/PiBotClient/src/tracking/Tracker.java</file>
+            <file>file:/C:/Users/Sebi/Documents/GitHub/PiRobotProjectJava/PiBotClient/src/network/TestNetworkController.java</file>
+            <file>file:/C:/Users/Sebi/Documents/GitHub/PiRobotProjectJava/PiBotClient/src/movementController/MovementController.java</file>
+            <file>file:/C:/Users/Sebi/Documents/GitHub/PiRobotProjectJava/PiBotClient/src/testEnviromnet/TestEnviroment.java</file>
+            <file>file:/C:/Users/Sebi/Documents/GitHub/PiRobotProjectJava/PiBotClient/src/network/NetworkController.java</file>
         </group>
     </open-files>
 </project-private>
