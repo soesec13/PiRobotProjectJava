@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.panels;
 
 import javax.swing.JPanel;
 
@@ -34,7 +34,7 @@ public class PanelTrack extends javax.swing.JPanel {
 
         pDraw = new javax.swing.JPanel();
 
-        setLayout(new java.awt.GridLayout());
+        setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout pDrawLayout = new javax.swing.GroupLayout(pDraw);
         pDraw.setLayout(pDrawLayout);

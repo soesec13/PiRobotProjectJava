@@ -1,10 +1,13 @@
-package view;
+package view.UI;
 
 import java.util.Hashtable;
 import javax.swing.JLabel;
 import network.TestNetworkController;
 import testEnviromnet.TestEnviroment;
 import tracking.Tracker;
+import view.panels.PanelConnect;
+import view.panels.PanelLogger;
+import view.panels.PanelTrack;
 
 /**
  *
@@ -125,7 +128,7 @@ public class MainUI extends javax.swing.JFrame {
 
         getContentPane().add(pHeader, java.awt.BorderLayout.PAGE_START);
 
-        splitPane.setDividerLocation(400);
+        splitPane.setDividerLocation(800);
 
         pOptions.setLayout(new java.awt.GridLayout(3, 0));
         splitPane.setRightComponent(pOptions);
@@ -150,7 +153,7 @@ public class MainUI extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
         pMovement.add(jButton5, gridBagConstraints);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/TLeft.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/pic/TLeft.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -158,7 +161,7 @@ public class MainUI extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
         pMovement.add(jButton6, gridBagConstraints);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/TRight.png"))); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/pic/TRight.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
