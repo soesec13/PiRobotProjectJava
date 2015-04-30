@@ -36,15 +36,17 @@ public class PanelTrack extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridLayout(1, 0));
 
+        pDraw.setBorder(javax.swing.BorderFactory.createTitledBorder("Draw Panel"));
+
         javax.swing.GroupLayout pDrawLayout = new javax.swing.GroupLayout(pDraw);
         pDraw.setLayout(pDrawLayout);
         pDrawLayout.setHorizontalGroup(
             pDrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 388, Short.MAX_VALUE)
         );
         pDrawLayout.setVerticalGroup(
             pDrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 275, Short.MAX_VALUE)
         );
 
         add(pDraw);

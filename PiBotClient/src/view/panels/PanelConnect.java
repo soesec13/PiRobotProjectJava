@@ -119,8 +119,12 @@ public class PanelConnect extends javax.swing.JPanel {
         {
             try {
                 ((NetworkController)network).connect(tfIp.getText(), Integer.parseInt(tfPort.getText()));
-            } catch (IOException ex) {
+            } 
+            catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
+            }catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(null, "Invalid Input");
             }
         }else{
             ((TestNetworkController)network).connect(testEnv);

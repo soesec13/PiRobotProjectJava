@@ -32,7 +32,7 @@ public class MainUI extends javax.swing.JFrame {
         initSlider();
         tNetworkControl=new TestNetworkController();
         tracker=new Tracker();
-        testEnviroment = new TestEnviroment(tNetworkControl,tracker);
+        testEnviroment = new TestEnviroment(tNetworkControl);
         pConnect=new PanelConnect(null);
         pTrack=new PanelTrack();
         pLogger=new PanelLogger();

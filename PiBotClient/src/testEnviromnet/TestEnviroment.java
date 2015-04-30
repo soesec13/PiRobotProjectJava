@@ -11,7 +11,7 @@ public class TestEnviroment {
     private int x=0,y=0;
     private int lookingDirection=0;//Je nachdem wo hin der Robter schaut
     private TestNetworkController control;
-    public TestEnviroment(TestNetworkController control,Tracker tracker)
+    public TestEnviroment(TestNetworkController control)
     {
         this.control=control;
     }
