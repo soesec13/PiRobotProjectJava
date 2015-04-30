@@ -1,16 +1,57 @@
 package view;
 
+import java.util.Hashtable;
+import javax.swing.JLabel;
+import network.TestNetworkController;
+import testEnviromnet.TestEnviroment;
+import tracking.Tracker;
+
 /**
  *
  * Unser Hauptfenster
  */
 public class MainUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainUI
-     */
+    private PanelConnect    pConnect;
+    private PanelTrack      pTrack;
+    private PanelLogger     pLogger;
+    private TestEnviroment  testEnviroment;
+    private TestNetworkController tNetworkControl;
+    private Tracker         tracker;
     public MainUI() {
         initComponents();
+        initObjects();
+        useSetter();
+    }
+    public void initObjects()
+    {
+        initSlider();
+        tNetworkControl=new TestNetworkController();
+        tracker=new Tracker();
+        testEnviroment = new TestEnviroment(tNetworkControl,tracker);
+        pConnect=new PanelConnect(null);
+        pTrack=new PanelTrack();
+        pLogger=new PanelLogger();
+    }
+    public void useSetter()
+    {
+        tracker.setPanel(pTrack.getDrawPanel());
+    }
+    public void initSlider()
+    {
+        Hashtable labelTable = new Hashtable();
+        labelTable.put(0,  new JLabel("|\n0") );
+        labelTable.put(10, new JLabel("|") );
+        labelTable.put(20, new JLabel("|") );
+        labelTable.put(30, new JLabel("|") );
+        labelTable.put(40, new JLabel("|") );
+        labelTable.put(50, new JLabel("|\n50") );
+        labelTable.put(60, new JLabel("|") );
+        labelTable.put(70, new JLabel("|") );
+        labelTable.put(80, new JLabel("|") );
+        labelTable.put(90, new JLabel("|") );
+        labelTable.put(100, new JLabel("|\n100") );
+        speedSlider.setLabelTable( labelTable );
     }
 
     /**
@@ -21,22 +62,131 @@ public class MainUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        pHeader = new javax.swing.JPanel();
+        btConnect = new javax.swing.JButton();
+        btStartTracking = new javax.swing.JButton();
+        btStartLogger = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        splitPane = new javax.swing.JSplitPane();
+        pOptions = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        speedSlider = new javax.swing.JSlider();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.BorderLayout(20, 20));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        pHeader.setLayout(new java.awt.GridLayout(1, 0, 30, 0));
+
+        btConnect.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
+        btConnect.setText("Connect");
+        btConnect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConnectActionPerformed(evt);
+            }
+        });
+        pHeader.add(btConnect);
+
+        btStartTracking.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
+        btStartTracking.setText("Start Tracker");
+        pHeader.add(btStartTracking);
+
+        btStartLogger.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
+        btStartLogger.setText("Start Logger");
+        pHeader.add(btStartLogger);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("PiBot");
+        pHeader.add(jLabel1);
+
+        getContentPane().add(pHeader, java.awt.BorderLayout.PAGE_START);
+
+        splitPane.setDividerLocation(400);
+
+        pOptions.setLayout(new java.awt.GridLayout());
+        splitPane.setRightComponent(pOptions);
+
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jButton4.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
+        jButton4.setText("Forward");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
+        jPanel2.add(jButton4, gridBagConstraints);
+
+        jButton5.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
+        jButton5.setText("Back");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
+        jPanel2.add(jButton5, gridBagConstraints);
+
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/TLeft.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
+        jPanel2.add(jButton6, gridBagConstraints);
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/TRight.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
+        jPanel2.add(jButton7, gridBagConstraints);
+
+        jButton8.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
+        jButton8.setText("Left ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
+        jPanel2.add(jButton8, gridBagConstraints);
+
+        jButton9.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
+        jButton9.setText("Right");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
+        jPanel2.add(jButton9, gridBagConstraints);
+
+        speedSlider.setMinorTickSpacing(10);
+        speedSlider.setPaintLabels(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
+        jPanel2.add(speedSlider, gridBagConstraints);
+
+        splitPane.setLeftComponent(jPanel2);
+
+        getContentPane().add(splitPane, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConnectActionPerformed
+        
+    }//GEN-LAST:event_btConnectActionPerformed
 
     /**
      * @param args the command line arguments
@@ -74,5 +224,20 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btConnect;
+    private javax.swing.JButton btStartLogger;
+    private javax.swing.JButton btStartTracking;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel pHeader;
+    private javax.swing.JPanel pOptions;
+    private javax.swing.JSlider speedSlider;
+    private javax.swing.JSplitPane splitPane;
     // End of variables declaration//GEN-END:variables
 }

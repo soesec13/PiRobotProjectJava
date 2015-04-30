@@ -17,7 +17,8 @@ public class NetworkController implements AbstractNetwork {
     private BufferedReader in;
     private PrintWriter out;
 
-    public NetworkController(String hostName, int port) throws IOException {
+    public void connect(String hostName, int port)throws IOException
+    {
         try {
             Socket socket = new Socket(hostName, port);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));

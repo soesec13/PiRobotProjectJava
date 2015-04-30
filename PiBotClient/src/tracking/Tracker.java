@@ -10,7 +10,11 @@ import javax.swing.JPanel;
 public class Tracker {
     public static boolean ACTIVE=false;
     private JPanel panel;
-    public Tracker(JPanel panel)
+    public Tracker()
+    {
+        
+    }
+    public void setPanel(JPanel panel)
     {
         this.panel=panel;
     }

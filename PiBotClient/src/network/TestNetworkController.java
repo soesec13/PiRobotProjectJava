@@ -9,9 +9,12 @@ import testEnviromnet.TestEnviroment;
 public class TestNetworkController implements AbstractNetwork{
     
     private TestEnviroment testEnv;
-    public TestNetworkController(TestEnviroment evn)
+    public TestNetworkController()
     {
-        this.testEnv=evn;
+    }
+    public void connect(TestEnviroment env)
+    {
+        this.testEnv=env;
     }
     @Override
     public void send(String message) {
