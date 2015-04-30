@@ -18,6 +18,7 @@ public class MainUI extends javax.swing.JFrame {
     private TestEnviroment  testEnviroment;
     private TestNetworkController tNetworkControl;
     private Tracker         tracker;
+    private boolean connectOn=false,trackerOn=false,loggerOn=false;
     public MainUI() {
         initComponents();
         initObjects();
@@ -32,6 +33,12 @@ public class MainUI extends javax.swing.JFrame {
         pConnect=new PanelConnect(null);
         pTrack=new PanelTrack();
         pLogger=new PanelLogger();
+        pOptions.add(pConnect);
+        pOptions.add(pTrack);
+        pOptions.add(pLogger);
+        pConnect.setVisible(false);
+        pTrack.setVisible(false);
+        pLogger.setVisible(false);
     }
     public void useSetter()
     {
@@ -71,7 +78,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         splitPane = new javax.swing.JSplitPane();
         pOptions = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        pMovement = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -86,20 +93,30 @@ public class MainUI extends javax.swing.JFrame {
         pHeader.setLayout(new java.awt.GridLayout(1, 0, 30, 0));
 
         btConnect.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
-        btConnect.setText("Connect");
+        btConnect.setText("Show Connect");
         btConnect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btConnectActionPerformed(evt);
+                onConnect(evt);
             }
         });
         pHeader.add(btConnect);
 
         btStartTracking.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
-        btStartTracking.setText("Start Tracker");
+        btStartTracking.setText("Show Tracker");
+        btStartTracking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onStartTracker(evt);
+            }
+        });
         pHeader.add(btStartTracking);
 
         btStartLogger.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
-        btStartLogger.setText("Start Logger");
+        btStartLogger.setText("Show Logger");
+        btStartLogger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onStartLogger(evt);
+            }
+        });
         pHeader.add(btStartLogger);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -110,10 +127,10 @@ public class MainUI extends javax.swing.JFrame {
 
         splitPane.setDividerLocation(400);
 
-        pOptions.setLayout(new java.awt.GridLayout());
+        pOptions.setLayout(new java.awt.GridLayout(3, 0));
         splitPane.setRightComponent(pOptions);
 
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        pMovement.setLayout(new java.awt.GridBagLayout());
 
         jButton4.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
         jButton4.setText("Forward");
@@ -122,7 +139,7 @@ public class MainUI extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        jPanel2.add(jButton4, gridBagConstraints);
+        pMovement.add(jButton4, gridBagConstraints);
 
         jButton5.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
         jButton5.setText("Back");
@@ -131,7 +148,7 @@ public class MainUI extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        jPanel2.add(jButton5, gridBagConstraints);
+        pMovement.add(jButton5, gridBagConstraints);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/TLeft.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -139,7 +156,7 @@ public class MainUI extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        jPanel2.add(jButton6, gridBagConstraints);
+        pMovement.add(jButton6, gridBagConstraints);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/TRight.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -147,7 +164,7 @@ public class MainUI extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        jPanel2.add(jButton7, gridBagConstraints);
+        pMovement.add(jButton7, gridBagConstraints);
 
         jButton8.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
         jButton8.setText("Left ");
@@ -156,7 +173,7 @@ public class MainUI extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        jPanel2.add(jButton8, gridBagConstraints);
+        pMovement.add(jButton8, gridBagConstraints);
 
         jButton9.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
         jButton9.setText("Right");
@@ -165,7 +182,7 @@ public class MainUI extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        jPanel2.add(jButton9, gridBagConstraints);
+        pMovement.add(jButton9, gridBagConstraints);
 
         speedSlider.setMinorTickSpacing(10);
         speedSlider.setPaintLabels(true);
@@ -175,18 +192,56 @@ public class MainUI extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        jPanel2.add(speedSlider, gridBagConstraints);
+        pMovement.add(speedSlider, gridBagConstraints);
 
-        splitPane.setLeftComponent(jPanel2);
+        splitPane.setLeftComponent(pMovement);
 
         getContentPane().add(splitPane, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConnectActionPerformed
-        
-    }//GEN-LAST:event_btConnectActionPerformed
+    private void onConnect(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onConnect
+        if(connectOn)
+        {
+            pConnect.setVisible(false);
+            connectOn=false;
+            btConnect.setText("Show Connect");
+        }else if(!connectOn)
+        {
+            pConnect.setVisible(true);
+            connectOn=true;
+            btConnect.setText("Hide Connect");
+        }
+    }//GEN-LAST:event_onConnect
+
+    private void onStartTracker(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onStartTracker
+        if(trackerOn)
+        {
+            pTrack.setVisible(false);
+            trackerOn=false;
+            btStartTracking.setText("Show Tracker");
+        }else if(!trackerOn)
+        {
+            pTrack.setVisible(true);
+            trackerOn=true;
+            btStartTracking.setText("Hide Tracker");
+        }
+    }//GEN-LAST:event_onStartTracker
+
+    private void onStartLogger(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onStartLogger
+        if(loggerOn)
+        {
+            pLogger.setVisible(false);
+            loggerOn=false;
+            btStartLogger.setText("Show Connect");
+        }else if(!loggerOn)
+        {
+            pLogger.setVisible(true);
+            loggerOn=true;
+            btStartLogger.setText("Hide Connect");
+        }
+    }//GEN-LAST:event_onStartLogger
 
     /**
      * @param args the command line arguments
@@ -234,8 +289,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pHeader;
+    private javax.swing.JPanel pMovement;
     private javax.swing.JPanel pOptions;
     private javax.swing.JSlider speedSlider;
     private javax.swing.JSplitPane splitPane;
